@@ -1,0 +1,52 @@
+.alert {
+  position: relative;
+  color: $body-color;
+  font-weight: $btn-font-weight;
+  line-height: $btn-line-height;
+  white-space: nowrap;
+  text-align: left;
+  height: $alert-height;
+  vertical-align: middle;
+  background-image: none;
+  @include alert-size($alert-padding-left, $alert-border-radius);
+
+  .close-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+}
+
+.alert-desc {
+  .title {
+    line-height: 20px;
+    height: 50%;
+  }
+  .desc {
+    line-height: 20px;
+    font-size: 10px;
+    height: 50%;
+  }
+}
+.title {
+  height: 100%;
+  line-height: 40px;
+}
+
+.alert-success {
+  @include alert-style($success);
+}
+
+.alert-info {
+  @include alert-style($info);
+}
+
+.alert-danger {
+  @include alert-style($danger);
+}
+
+.alert-warning {
+  @include alert-style($warning);
+}
