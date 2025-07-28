@@ -1,15 +1,17 @@
 import Alert, {AlertType} from "./components/Alert/alert";
+import Menu from './components/Menu/menu';
+import MenuItem from './components/Menu/menuItem';
 
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-          <Alert type={AlertType.Info} className="toButtom">111111111</Alert>
-          <Alert type={AlertType.Success} className="toButtom">2222222222</Alert>
-          <Alert type={AlertType.Danger} className="toButtom" desc="55555">111111111</Alert>
-          <Alert type={AlertType.Warning} className="toButtom" hasClose >111111111</Alert>
-      </header>
+      <Menu onSelect={(e) => console.log(e)}>
+          <MenuItem index={0}>111111111</MenuItem>
+          <MenuItem index={1} disabled>2222222222</MenuItem>
+          <MenuItem index={2}>111111111</MenuItem>
+          <MenuItem index={3}>111111111</MenuItem>
+      </Menu>
     </div>
   );
 }
