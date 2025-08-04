@@ -1,8 +1,8 @@
 import React, {AnchorHTMLAttributes, ButtonHTMLAttributes, FC} from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu"
-interface MenuItemProps {
-    index: number;
+export interface MenuItemProps {
+    index?: number; // 允许传入数字索引
     disabled?: boolean;
     className?: string;
     style?: React.CSSProperties;
@@ -19,14 +19,14 @@ const MenuItem: FC<MenuItemProps> = (props) => {
         children
     } = props;
 
-    const classes = classNames('menu-item', className, {
+    const classes = classNames('cyy-menu-item', className, {
         'is-disabled': disabled,
         'is-active': context.index === index
     });
 
     const handleClick = () => {
-        if (context.onselect && !disabled) {
-            context.onselect(index);
+        if (context.onselect && !disabled && (typeof index === 'number')) {
+            context.onselect(index)
         }
     }
     return (
@@ -36,4 +36,5 @@ const MenuItem: FC<MenuItemProps> = (props) => {
     );
 }
 
+MenuItem.displayName = "MenuItem";
 export default MenuItem;

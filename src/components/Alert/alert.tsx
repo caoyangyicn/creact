@@ -13,6 +13,7 @@ interface BaseAlertProps {
     type?: AlertType;
     href?: string;
     desc?: string;
+    title?: string;
     children: React.ReactNode;
     onClose?: () => void;
     hasClose: boolean;
@@ -24,13 +25,14 @@ const Alert: FC<AlertProps> = (props) => {
         type,
         className,
         desc,
+        title,
         hasClose = false,
         children,
         onClose,
         ...restProps
     } = props;
     const [showFlag, setShowFlag] = useState(true);
-    const classes = classNames('alert',className, {
+    const classes = classNames('cyy-alert',className, {
         [`alert-${type}`]: type,
         [`alert-desc`]: desc
     });
@@ -40,20 +42,18 @@ const Alert: FC<AlertProps> = (props) => {
         }
         setShowFlag(false);
     }
+    const content = children ?? title;
     if (!showFlag) return null;
     return (
         <div
             className={classes}
             {...restProps}
         >
-            <div className="title">{children}</div>
+            <div className="title">{content}</div>
             { desc && <div className="desc">{desc}</div> }
             { hasClose && <div className="close-icon" onClick={handleClose}>关闭</div> }
         </div>
     );
-
-
-
 }
 
 export default Alert;

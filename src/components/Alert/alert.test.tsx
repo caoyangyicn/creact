@@ -20,14 +20,14 @@ describe('test Alert component', () => {
         expect(element).toBeTruthy();
         expect(element).toBeInTheDocument();
         expect(element?.tagName).toEqual("DIV");
-        expect(element).toHaveClass('alert');
+        expect(element).toHaveClass('cyy-alert');
     });
 
     it("has the alert", () => {
         expect(element).toBeTruthy();
         expect(element).toBeInTheDocument();
         expect(element?.tagName).toEqual("DIV");
-        expect(element).toHaveClass('alert');
+        expect(element).toHaveClass('cyy-alert');
     });
 
     it("has close", () => {

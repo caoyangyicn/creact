@@ -14,7 +14,7 @@ describe('test Button component', () => {
         expect(element).toBeTruthy();
         expect(element).toBeInTheDocument();
         expect(element.tagName).toEqual("BUTTON");
-        expect(element).toHaveClass('btn');
+        expect(element).toHaveClass('cyy-btn');
     });
     it("click event", () => {
         const wrapper = render(<Button {...defaultProps}>Nice</Button>)

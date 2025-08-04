@@ -1,21 +1,31 @@
 import React, {FC, createContext, useState} from "react";
 import classNames from "classnames";
-
+import { MenuItemProps } from "./menuItem";
 type MenuMode = 'horizontal' | 'vertical';
 type selectCallback = (selectedIndex: number) => void;
 
-interface MenuProps {
+export interface MenuProps {
     defaultIndex?: number;
     mode?: MenuMode;
     className?: string;
     style?: React.CSSProperties;
     onSelect?: selectCallback;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 interface IMenuContext {
     index: number;
     onselect?: selectCallback;
+}
+const renderChildren = (children: React.ReactNode) => {
+    return React.Children.map(children, (child, index) => {
+        const childElement = child as React.FunctionComponentElement<MenuItemProps>;
+        if (childElement.type.displayName === 'MenuItem' || childElement.type.displayName === 'SubMenu') {
+            return React.cloneElement(childElement, { index });
+        } else {
+            console.error("Warning: Menu has a child which is not a MenuItem component");
+        }
+    });
 }
 
 export const MenuContext = createContext<IMenuContext>({ index: 0 });
@@ -29,7 +39,7 @@ const Menu: FC<MenuProps> = (props) => {
         children
     } = props;
     const [ currentActive, setActive ] = useState(defaultIndex);
-    const classes = classNames('menu', className, {
+    const classes = classNames('cyy-menu', className, {
         [`menu-${mode}`]: mode
     });
 
@@ -49,9 +59,9 @@ const Menu: FC<MenuProps> = (props) => {
     };
 
     return (
-        <ul className={classes} style={style}>
+        <ul className={classes} style={style} data-testid="test-menu">
             <MenuContext.Provider value={passedContext}>
-                {children}
+                {renderChildren(children)}
             </MenuContext.Provider>
         </ul>
     );
