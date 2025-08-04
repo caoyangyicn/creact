@@ -16,6 +16,8 @@ export interface MenuProps {
 interface IMenuContext {
     index: number;
     onselect?: selectCallback;
+    mode: MenuMode;
+
 }
 const renderChildren = (children: React.ReactNode) => {
     return React.Children.map(children, (child, index) => {
@@ -28,11 +30,11 @@ const renderChildren = (children: React.ReactNode) => {
     });
 }
 
-export const MenuContext = createContext<IMenuContext>({ index: 0 });
+export const MenuContext = createContext<IMenuContext>({ index: 0, mode: 'horizontal' });
 const Menu: FC<MenuProps> = (props) => {
     const {
         defaultIndex = 0,
-        mode = 'horizontal',
+        mode = 'vertical',
         className,
         style,
         onSelect,
@@ -50,7 +52,8 @@ const Menu: FC<MenuProps> = (props) => {
             if(onSelect){
                 onSelect(index);
             }
-        }
+        },
+        mode: mode
     }
     const handleClick = (index: number) => {
         if (onSelect) {
