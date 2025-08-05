@@ -54,21 +54,21 @@
   position: relative;
 }
 .menu-vertical  {
-  >.menu-item {
+  >.cyy-menu-item {
     border-bottom: $menu-item-active-border-width solid transparent;
   }
 
   .cyy-submenu {
-    padding-top: 20px;
     position: absolute;
     background: $white;
     z-index: 100;
-    top: calc(100% - 8px);
+    top: calc(100% + 8px);
     left: 0;
     border: $menu-border-width solid $menu-border-color;
     box-shadow: $submenu-box-shadow;
 
-    >.menu-item {
+    >.cyy-menu-item {
+      color:$body-color;
       padding: 10px;
       border-bottom: $menu-item-active-border-width solid transparent;
       &.is-active, &:hover {
@@ -83,8 +83,10 @@
   border-bottom: 0px;
   margin: 10px 20px;
   border-right: $menu-border-width solid $menu-border-color;
-  >.menu-item {
+  .cyy-menu-item {
+    color:$body-color;
     border-left: $menu-item-active-border-width solid transparent;
+    padding-left: 20px;
     &.is-active, &:hover {
       border-bottom: 0px;
       border-left: $menu-item-active-border-width solid $menu-item-active-color;

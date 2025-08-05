@@ -4,12 +4,12 @@ import MenuItem from "./menuItem";
 import {cleanup, fireEvent, render, RenderResult} from "@testing-library/react";
 
 const testProps: MenuProps = {
-    defaultIndex: 0,
+    defaultIndex: '0',
     onSelect: jest.fn(),
     className: "test",
 }
 const testVerticalProps: MenuProps = {
-    defaultIndex:0,
+    defaultIndex: '0',
     mode: "vertical",
 }
 const generateMenu = (props) => {
@@ -42,10 +42,10 @@ describe("menu test suit", () => {
         fireEvent.click(thirdItem);
         expect(thirdItem).toHaveClass("is-active");
         expect(activeElement).not.toHaveClass("is-active");
-        expect(testProps.onSelect).toHaveBeenCalledWith(2);
+        expect(testProps.onSelect).toHaveBeenCalledWith('2');
         fireEvent.click(disabledElement);
         expect(disabledElement).not.toHaveClass("is-active");
-        expect(testProps.onSelect).not.toHaveBeenCalledWith(1);
+        expect(testProps.onSelect).not.toHaveBeenCalledWith('1');
     })
 
     it("should render a vertical menu", () => {
@@ -56,4 +56,9 @@ describe("menu test suit", () => {
         expect(menuElement).toHaveClass("cyy-menu");
         expect(menuElement).toHaveClass("menu-vertical");
     });
+
+    it("should test submenu", () => {
+
+    });
 });
+export {};

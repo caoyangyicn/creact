@@ -7,7 +7,7 @@ const defaultProps = {
     onClick: jest.fn()
 }
 
-describe('test Button component', () => {
+describe('test Tabs component', () => {
     it("has the button", () => {
         const wrapper = render(<Button {...defaultProps}>Nice</Button>)
         let element = wrapper.getByText("Nice");

@@ -2,7 +2,7 @@ import React, {AnchorHTMLAttributes, ButtonHTMLAttributes, FC} from "react";
 import classNames from "classnames";
 import { MenuContext } from "./menu"
 export interface MenuItemProps {
-    index?: number; // 允许传入数字索引
+    index?: string; // 允许传入数字索引
     disabled?: boolean;
     className?: string;
     style?: React.CSSProperties;
@@ -25,7 +25,7 @@ const MenuItem: FC<MenuItemProps> = (props) => {
     });
 
     const handleClick = () => {
-        if (context.onselect && !disabled && (typeof index === 'number')) {
+        if (context.onselect && !disabled && (typeof index === 'string')) {
             context.onselect(index)
         }
     }

@@ -1,20 +1,14 @@
-import Menu from './components/Menu/menu';
-import MenuItem from './components/Menu/menuItem';
-import Submenu from './components/Menu/subMenu';
+import Tabs from './components/Tabs/tabs';
+import TabItem  from "./components/Tabs/tabItem";
 
 function App() {
   return (
     <div className="App">
-      <Menu onSelect={(e) => console.log(e)} mode="vertical">
-          <MenuItem index={0}>item1</MenuItem>
-          <Submenu title="item2">
-            <MenuItem index={1}>subItem1</MenuItem>
-            <MenuItem index={2}>subItem2</MenuItem>
-            <MenuItem index={3}>subItem3</MenuItem>
-          </Submenu>
-          <MenuItem index={2}>item3</MenuItem>
-          <MenuItem index={3}>item4</MenuItem>
-      </Menu>
+      <Tabs>
+          <TabItem label="Tab 1">11111</TabItem>
+          <TabItem label="Tab 2">2222</TabItem>
+          <TabItem label="Tab 3">3333</TabItem>
+      </Tabs>
     </div>
   );
 }

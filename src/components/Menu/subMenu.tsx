@@ -3,7 +3,7 @@ import classNames from "classnames";
 import {MenuContext} from "./menu";
 
 export interface SubMenuProps {
-    index?: number; // 允许传入数字索引
+    index?: String; // 允许传入数字索引
     title: string;
     className?: string;
     style?: React.CSSProperties;
@@ -17,13 +17,15 @@ const SubMenu: FC<SubMenuProps> = ({index, title, children, className}) => {
         'menu-open': menuOpen
     });
     const handleClick = (e: React.MouseEvent) => {
-        e.preventDefault();
         setMenuOpen(!menuOpen);
     };
-
+    let timer: any;
     const handleMouse = (e: React.MouseEvent, open: boolean) => {
         e.preventDefault();
-        setMenuOpen(open);
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            setMenuOpen(open);
+        }, 300);
     };
 
     const clickEvents = context.mode === 'horizontal' ? {
@@ -32,7 +34,9 @@ const SubMenu: FC<SubMenuProps> = ({index, title, children, className}) => {
 
     const hoverEvents = context.mode === 'vertical' ? {
         onMouseEnter: (e: React.MouseEvent) => { handleMouse(e, true)},
-        onMouseLeave: (e: React.MouseEvent) => { handleMouse(e, false)}
+        onMouseLeave: (e: React.MouseEvent) => {
+            handleMouse(e, false)
+        }
     } : {}
 
     const renderChildren = () => {
@@ -40,7 +44,7 @@ const SubMenu: FC<SubMenuProps> = ({index, title, children, className}) => {
             const childElement = child as React.FunctionComponentElement<SubMenuProps>;
             if (childElement.type.displayName === 'MenuItem' || childElement.type.displayName === 'SubMenu') {
                 return React.cloneElement(childElement, {
-                    index: i
+                    index: `${index}-${i}`
                 });
             } else {
                 console.error("Warning: SubMenu has a child which is not a MenuItem component");
