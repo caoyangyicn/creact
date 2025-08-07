@@ -7,7 +7,7 @@ function App() {
       <Tabs>
           <TabItem label="Tab 1">11111</TabItem>
           <TabItem label="Tab 2">2222</TabItem>
-          <TabItem label="Tab 3">3333</TabItem>
+          <TabItem label="Tab 3" disabled>3333</TabItem>
       </Tabs>
     </div>
   );

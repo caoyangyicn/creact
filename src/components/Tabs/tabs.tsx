@@ -1,5 +1,6 @@
-import React, {AnchorHTMLAttributes, ButtonHTMLAttributes, createContext, FC, useState, useRef } from "react";
+import React, { createContext, FC, useState, useRef, useEffect } from "react";
 import classNames from "classnames";
+import TabItem, {TabItemProps} from "./tabItem";
 
 type selectCallback = (selectedIndex: number) => void;
 type TabType = 'normal' | 'special';
@@ -17,6 +18,7 @@ interface ITabsContext {
     index: number;
     onSelect?: selectCallback;
     type: TabType;
+    setContent?: (children: React.ReactNode) => void;
 }
 export const TabsContext = createContext<ITabsContext>({ index: 0, type: 'normal' });
 
@@ -33,19 +35,23 @@ const Tabs: FC<TabProps> = (props) => {
     } = props;
 
     const [ currentActive, setActive ] = useState(defaultIndex);
+    const [content, setContent] = useState<React.ReactNode>(null);
     const tabRefs = useRef<Array<HTMLDivElement | null>>([]);
 
     const passedContext: ITabsContext = {
-        index: currentActive ? currentActive : 0,
+        index: currentActive ? currentActive : defaultIndex,
         onSelect: (index: number) => {
             setActive(index);
             if(onSelect){
                 onSelect(index);
             }
         },
+        setContent(children: any) {
+            setContent(children);
+        },
         type: tabType
     }
-
+    // 将 currentChild 声明为带有 props 的 React 元素
     const classes = classNames('cyy-tabs',className, {
         [`tabs-${tabType}`]: tabType,
     });
@@ -80,6 +86,16 @@ const Tabs: FC<TabProps> = (props) => {
         left: left,
         width: bottomWidth
     };
+
+
+    useEffect(() => {
+        const firstTab = React.Children.toArray(children).find((child, idx) =>
+            React.isValidElement(child) && (child.type as any).displayName === "TabItem" && idx === currentActive
+        ) as React.ReactElement<TabItemProps> | undefined;
+        if (firstTab) {
+            setContent(firstTab.props.children);
+        }
+    }, [children, currentActive]);
     return (
         <div className={classes}>
             <TabsContext.Provider value={passedContext}>
@@ -89,7 +105,7 @@ const Tabs: FC<TabProps> = (props) => {
             </div>
             </TabsContext.Provider>
             <div className="tabs-content">
-
+                {content}
             </div>
         </div>
     );

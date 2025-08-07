@@ -30,6 +30,7 @@ const TabItem = forwardRef<HTMLDivElement, TabItemProps>((props, ref) => {
     const handleClick = () => {
         if (context.onSelect && !disabled && (typeof index === 'number')) {
             context.onSelect(index)
+            context.setContent && context.setContent(children);
         }
     }
 
