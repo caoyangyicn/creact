@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import classNames from "classnames";
 import {MenuContext} from "./menu";
+import Icon from "../Icon/icon";
 
 export interface SubMenuProps {
     index?: String; // 允许传入数字索引
@@ -61,6 +62,7 @@ const SubMenu: FC<SubMenuProps> = ({index, title, children, className}) => {
         <li className={subMenuClasses} {...hoverEvents}>
             <div className="submenu-title" {...clickEvents}>
                 {title}
+                <Icon icon={{ prefix: 'fas', iconName: 'caret-down' }}/>
             </div>
             {renderChildren()}
         </li>

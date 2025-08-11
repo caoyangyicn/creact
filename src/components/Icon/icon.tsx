@@ -1,7 +1,6 @@
 import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import Menu from "../Menu/menu";
 
 type themeType = 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'dark' | 'light';
 export interface IconProps extends FontAwesomeIconProps {
