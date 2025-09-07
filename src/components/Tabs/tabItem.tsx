@@ -1,7 +1,7 @@
-import React, { forwardRef } from "react";
+import React, {forwardRef} from "react";
 import classNames from "classnames";
-import MenuItem from "../Menu/menuItem";
-import { TabsContext } from "./tabs";
+import {TabsContext} from "./tabs";
+
 export interface TabItemProps {
     index?: number; // 允许传入数字索引
     disabled?: boolean;

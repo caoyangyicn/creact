@@ -1,5 +1,5 @@
 import Tabs from './components/Tabs/tabs';
-import TabItem  from "./components/Tabs/tabItem";
+import TabItem from "./components/Tabs/tabItem";
 import Icon from "./components/Icon/icon";
 import Menu from "./components/Menu/menu";
 import SubMenu from "./components/Menu/subMenu";

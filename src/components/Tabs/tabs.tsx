@@ -1,6 +1,6 @@
-import React, { createContext, FC, useState, useRef, useEffect } from "react";
+import React, {createContext, FC, useEffect, useRef, useState} from "react";
 import classNames from "classnames";
-import TabItem, {TabItemProps} from "./tabItem";
+import {TabItemProps} from "./tabItem";
 
 type selectCallback = (selectedIndex: number) => void;
 type TabType = 'normal' | 'special';

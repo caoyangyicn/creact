@@ -1,8 +1,7 @@
-import Alert  from "./alert";
+import Alert from "./alert";
 import React from 'react'
 import {fireEvent, render} from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Button from "../Button/button";
 
 const defaultProps = {
     onClose: jest.fn(),

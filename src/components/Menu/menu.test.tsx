@@ -1,5 +1,5 @@
 import React from "react";
-import Menu, { MenuProps } from "./menu";
+import Menu, {MenuProps} from "./menu";
 import MenuItem from "./menuItem";
 import {cleanup, fireEvent, render, RenderResult} from "@testing-library/react";
 
