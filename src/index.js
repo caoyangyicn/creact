@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './styles/index.scss';
-import {fas} from '@fortawesome/free-solid-svg-icons'
-import {library} from '@fortawesome/fontawesome-svg-core'
-
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
 library.add(fas)
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

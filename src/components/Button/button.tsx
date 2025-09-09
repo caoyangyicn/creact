@@ -14,7 +14,7 @@ export enum ButtonType {
     Link = 'link',
 }
 
-interface BaseButtonProps {
+export interface BaseButtonProps {
     className?: string;
     /**设置 Alert 的禁用 */
     disabled?: boolean;

@@ -1,7 +1,8 @@
-import React, {FC} from "react";
+import React, {FC, useRef} from "react";
 import classNames from "classnames";
 import {MenuContext} from "./menu";
 import Icon from "../Icon/icon";
+import {CSSTransition} from 'react-transition-group';
 
 export interface SubMenuProps {
     index?: String; // 允许传入数字索引
@@ -14,6 +15,8 @@ export interface SubMenuProps {
 const SubMenu: FC<SubMenuProps> = ({index, title, children, className}) => {
     const context = React.useContext(MenuContext);
     const [ menuOpen, setMenuOpen] = React.useState(false);
+    const nodeRef = useRef<HTMLUListElement>(null);
+
     const subMenuClasses = classNames('cyy-menu-item submenu', {
         'menu-open': menuOpen
     });
@@ -52,10 +55,20 @@ const SubMenu: FC<SubMenuProps> = ({index, title, children, className}) => {
             }
 
         });
+
         return (
-            <ul className="cyy-submenu" >
-                {childrenComponent}
-            </ul>
+            <CSSTransition
+                in={menuOpen}
+                timeout={300}
+                classNames="zoom-in-top"
+                appear
+                unmountOnExit
+                nodeRef={nodeRef}
+            >
+                <ul className="cyy-submenu">
+                    {childrenComponent}
+                </ul>
+            </CSSTransition>
         );
     }
     return (

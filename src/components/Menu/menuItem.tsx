@@ -1,7 +1,6 @@
-import React, {FC} from "react";
+import React, {AnchorHTMLAttributes, ButtonHTMLAttributes, FC} from "react";
 import classNames from "classnames";
-import {MenuContext} from "./menu"
-
+import { MenuContext } from "./menu"
 export interface MenuItemProps {
     index?: string; // 允许传入数字索引
     disabled?: boolean;

@@ -1,5 +1,5 @@
-import {FontAwesomeIcon, FontAwesomeIconProps} from '@fortawesome/react-fontawesome'
-import React, {FC} from 'react';
+import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome'
+import React, { FC } from 'react';
 import classNames from 'classnames';
 
 type themeType = 'primary' | 'success' | 'info' | 'warning' | 'danger' | 'dark' | 'light';
